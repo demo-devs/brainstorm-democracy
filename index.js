@@ -2,7 +2,7 @@ import {createStore} from 'redux'
 import React from 'react'
 import { render } from 'react-dom'
 import App from './components/app'
-// const reducer = require('./reducer')
+const reducer = require('./reducer')
 
 
 const initialState = {
