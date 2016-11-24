@@ -7,8 +7,10 @@ function reducer(state, action) {
     case 'ADD_ONE':
       let votes = newState.votes
       let ideas = newState.ideas
+      if(!ideas.includes(action.payload)) {
+        ideas.push(action.payload)
+      }
 
-      ideas.push(action.payload)
       return newState
     default:
       return newState
