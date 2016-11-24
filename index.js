@@ -28,10 +28,11 @@ const Input = (props) => {
 
 
 const Idea = (props) => {
-  return <div>
-    <p>IDEA</p>
-      <h3>{props.desc}</h3>
-      </div>
+  return (
+    <ul>
+      <li>{props.desc}</li>
+    </ul>
+  )
 }
 
 const Ideas = (props) => {
