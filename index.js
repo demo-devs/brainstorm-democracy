@@ -6,6 +6,7 @@ import App from './components/app'
 
 
 const initialState = {
+
   ideas: [
     { id: 1, desc: 'Make a brainstorm democracy app' },
     { id: 2, desc: 'Get a massage'}
@@ -15,6 +16,7 @@ const initialState = {
     { id:2, count: 4 }
   ]
 }
+
 
 // const store = createStore(reducer, initialState)
 

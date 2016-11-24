@@ -27,7 +27,12 @@
   },
   "homepage": "https://github.com/mel-booth/brainstorm-democracy",
   "dependencies": {
+<<<<<<< HEAD
     "redux": "^3.6.0"
+=======
+    "clone": "^2.1.0",
+    "deep-freeze": "0.0.1"
+>>>>>>> be863f5347bcb291ff20fe344f8fec9c83164497
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.5.0",
