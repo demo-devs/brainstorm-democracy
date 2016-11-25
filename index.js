@@ -6,7 +6,6 @@ const reducer = require('./reducer')
 
 
 const initialState = {
-
   ideas: [
     { id: 1, desc: 'Make a brainstorm democracy app' },
     { id: 2, desc: 'Get a massage'}
@@ -17,8 +16,7 @@ const initialState = {
   ]
 }
 
-
-// const store = createStore(reducer, initialState)
+const store = createStore(reducer, initialState)
 
 const Input = (props) => {
   return (
@@ -26,25 +24,35 @@ const Input = (props) => {
     <input type='text' placeholder='Type your idea here' />
     <input type='submit' value='Submit' />
   </div>
-)
+)}
+
+
+const Idea = (props) => {
+  return (
+    <ul>
+      <li>{props.desc}</li>
+    </ul>
+  )
 }
-const Idea = (props => {
-  return <div> <h3>{props.desc}</h3> </div> })
 
 const Ideas = (props) => {
-   return <div>
-    {props.ideas.map((idea) => {
-      return <Idea desc={idea.desc} />
-    })}
-  </div>
+  return (
+    <div>
+      {props.ideas.map((idea)=> {
+        return <Idea desc={idea.desc} />
+      })}
+    </div>)
 }
 
 const main = document.querySelector('main')
-render(<Input />, main)
 
-// store.subscribe(() => {
-//   const state = store.getState()
-//   render(<Input dispatch={store.dispatch} />, main)
-// })
-//
-// store.dispatch({type: 'INIT'})
+store.subscribe(() => {
+  const state = store.getState()
+  render(
+  <div>
+    <Input  />
+    <Ideas ideas={state.ideas}/>
+  </div>, main)
+})
+
+store.dispatch({type: 'INIT'})
