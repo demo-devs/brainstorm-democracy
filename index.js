@@ -16,9 +16,10 @@ const store = createStore(reducer, initialState)
 
 const Input = (props) => {
   return (
-  <div>
+  <div id='formDiv'>
+    <h1>Brainstorm Democracy</h1>
     <input type='text'  placeholder='Type your idea here' />
-    <input type='submit' onClick={(e) => {
+    <input class='btn' type='submit' value='Submit' onClick={(e) => {
       props.dispatch({type: 'ADD_ONE', payload: {desc: e.target.previousSibling.value, votes: 0}})
     }}
       />
@@ -29,7 +30,7 @@ const Input = (props) => {
 const Idea = (props) => {
   return (
     <ul>
-      <li onClick={() => props.dispatch({type:'ADD_VOTE',payload: props.index})}>{props.desc}{props.votes}</li>
+      <li onClick={() => props.dispatch({type:'ADD_VOTE',payload: props.index})}>{props.desc} <span><h1>{props.votes}</h1></span></li>
     </ul>
   )
 }
@@ -37,6 +38,7 @@ const Idea = (props) => {
 const Ideas = (props) => {
   return (
     <div>
+
       {props.ideas.map((idea, index)=> {
         return <Idea dispatch={props.dispatch} desc={idea.desc} votes={idea.votes} index={index} />
       })}
@@ -50,7 +52,7 @@ store.subscribe(() => {
   const state = store.getState()
   render(
   <div>
-    <Input  state={state} dispatch={store.dispatch}/>
+    <Input   state={state} dispatch={store.dispatch}/>
     <Ideas dispatch={store.dispatch} ideas={state.ideas}/>
   </div>, main)
 })
