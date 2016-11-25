@@ -25,10 +25,10 @@ const expected = {
     { id: 2, desc: 'Get a massage'},
     { id: 3, desc: 'Pay for the massage'}
 ],
-  votes: [
-    { id:1, count: 2 },
-    { id:2, count: 4 }
-  ]
+votes:{
+   1: 2,
+   2: 4
+ }
 }
 const action = {type:'ADD_ONE', payload: { id: 3, desc: 'Pay for the massage'}}
 
