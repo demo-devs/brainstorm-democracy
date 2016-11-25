@@ -7,8 +7,8 @@ const reducer = require('./reducer')
 
 const initialState = {
   ideas: [
-    { id: 1, desc: 'Make a brainstorm democracy app' , votes: 1},
-    { id: 2, desc: 'Get a massage', votes: 2}
+    { desc: 'Make a brainstorm democracy app' , votes: 1},
+    { desc: 'Get a massage', votes: 2}
 ]
 }
 
@@ -29,7 +29,7 @@ const Input = (props) => {
 const Idea = (props) => {
   return (
     <ul>
-      <li>{props.desc}</li>
+      <li onClick={() => props.dispatch({props.index})}>{props.desc}</li>
     </ul>
   )
 }
