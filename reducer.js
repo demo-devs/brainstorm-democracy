@@ -13,12 +13,9 @@ function reducer(state, action) {
       }
 
     case 'ADD_VOTE':
-      votes = newState.votes
-      ideas = newState.ideas
-      votes[action.payload] += 1
+      newState.ideas[action.payload.index].votes++
       return newState
 
-      return newState
     default:
       return newState
   }

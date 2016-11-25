@@ -7,13 +7,9 @@ const reducer = require('./reducer')
 
 const initialState = {
   ideas: [
-    { id: 1, desc: 'Make a brainstorm democracy app' },
-    { id: 2, desc: 'Get a massage'}
-],
-  votes: [
-    { id:1, count: 2 },
-    { id:2, count: 4 }
-  ]
+    { desc: 'Make a brainstorm democracy app' , votes: 1},
+    { desc: 'Get a massage', votes: 2}
+]
 }
 
 const store = createStore(reducer, initialState)
@@ -21,8 +17,11 @@ const store = createStore(reducer, initialState)
 const Input = (props) => {
   return (
   <div>
-    <input type='text' placeholder="What's your idea?" />
-    <input type='submit' value='Submit' />
+    <input type='text'  placeholder='Type your idea here' />
+    <input type='submit' onClick={(e) => {
+      props.dispatch({type: 'ADD_ONE', payload: {desc: e.target.previousSibling.value, votes: 0}})
+    }}
+      />
   </div>
 )}
 
@@ -38,8 +37,8 @@ const Idea = (props) => {
 const Ideas = (props) => {
   return (
     <div>
-      {props.ideas.map((idea)=> {
-        return <Idea desc={idea.desc} />
+      {props.ideas.map((idea, index)=> {
+        return <Idea desc={idea.desc} index={index} />
       })}
     </div>)
 }
@@ -50,7 +49,7 @@ store.subscribe(() => {
   const state = store.getState()
   render(
   <div>
-    <Input  />
+    <Input  state={state} dispatch={store.dispatch}/>
     <Ideas ideas={state.ideas}/>
   </div>, main)
 })
