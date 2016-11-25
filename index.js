@@ -6,10 +6,7 @@ const reducer = require('./reducer')
 
 
 const initialState = {
-  ideas: [
-    { desc: 'Make a brainstorm democracy app' , votes: 1},
-    { desc: 'Get a massage', votes: 2}
-]
+  ideas: []
 }
 
 const store = createStore(reducer, initialState)
