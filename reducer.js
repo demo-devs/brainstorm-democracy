@@ -13,7 +13,8 @@ function reducer(state, action) {
       }
 
     case 'ADD_VOTE':
-      newState.ideas[action.payload.index].votes++
+    console.log(action.payload)
+      newState.ideas[action.payload].votes++
       return newState
 
     default:

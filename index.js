@@ -29,7 +29,7 @@ const Input = (props) => {
 const Idea = (props) => {
   return (
     <ul>
-      <li onClick={() => props.dispatch({props.index})}>{props.desc}</li>
+      <li onClick={() => props.dispatch({type:'ADD_VOTE',payload: props.index})}>{props.desc}{props.votes}</li>
     </ul>
   )
 }
@@ -38,9 +38,10 @@ const Ideas = (props) => {
   return (
     <div>
       {props.ideas.map((idea, index)=> {
-        return <Idea desc={idea.desc} index={index} />
+        return <Idea dispatch={props.dispatch} desc={idea.desc} votes={idea.votes} index={index} />
       })}
-    </div>)
+    </div>
+  )
 }
 
 const main = document.querySelector('main')
@@ -50,7 +51,7 @@ store.subscribe(() => {
   render(
   <div>
     <Input  state={state} dispatch={store.dispatch}/>
-    <Ideas ideas={state.ideas}/>
+    <Ideas dispatch={store.dispatch} ideas={state.ideas}/>
   </div>, main)
 })
 
