@@ -11,26 +11,18 @@ test('ADD_ONE adds an idea if not exists', (t) => {
   //arrange
   const  state = {
     ideas: [
-      { id: 1, desc: 'Make a brainstorm democracy app' },
-      { id: 2, desc: 'Get a massage'}
+      { desc: 'Make a brainstorm democracy app', votes: 1 },
+      { desc: 'Get a massage', votes: 2}
   ],
-    votes: [
-      { id:1, count: 2 },
-      { id:2, count: 4 }
-    ]
   }
 const expected = {
   ideas: [
-    { id: 1, desc: 'Make a brainstorm democracy app' },
-    { id: 2, desc: 'Get a massage'},
-    { id: 3, desc: 'Pay for the massage'}
+    {  desc: 'Make a brainstorm democracy app', votes: 1},
+    {  desc: 'Get a massage', votes: 2},
+    {  desc: 'Pay for the massage', votes: 3}
 ],
-votes:{
-   1: 2,
-   2: 4
- }
 }
-const action = {type:'ADD_ONE', payload: { id: 3, desc: 'Pay for the massage'}}
+const action = {type:'ADD_ONE', payload: { desc: 'Pay for the massage', votes: 3}}
 
 freeze(state)
 freeze(action)
@@ -45,26 +37,18 @@ test('ADD_VOTE adds a vote to the corresponding ID', (t) => {
   //arrange
   const  state = {
     ideas: [
-      { id: 1, desc: 'Make a brainstorm democracy app' },
-      { id: 2, desc: 'Get a massage'}
+      { desc: 'Make a brainstorm democracy app', votes: 1 },
+      { desc: 'Get a massage', votes: 2}
   ],
-  votes:{
-     1: 2,
-     2: 4
-   }
   }
 
 const expected = {
   ideas: [
-    { id: 1, desc: 'Make a brainstorm democracy app' },
-    { id: 2, desc: 'Get a massage'}
+    { desc: 'Make a brainstorm democracy app', votes: 1},
+    { desc: 'Get a massage', votes: 3}
 ],
-  votes:{
-     1: 2,
-     2: 5
-   }
 }
-const action = {type: 'ADD_VOTE', payload: 2}
+const action = {type: 'ADD_VOTE', payload: {index: 1}}
 
 freeze(action)
 freeze(state)
