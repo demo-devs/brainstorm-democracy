@@ -11,12 +11,21 @@ body, main {
     flex-direction: row;
     justify-content: center;
     flex-wrap: nowrap;
-
+    color: white;
 
 }
 
+#heading {
+  margin-right: 60px;
+  font-size: 5em;
+}
 h1 {
   text-align: center;
+  font-family: 'Bangers', cursive;
+  color: white;
+  margin-right: 20px;
+
+
 }
 #formDiv {
   margin-left: 100px;

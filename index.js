@@ -17,7 +17,7 @@ const store = createStore(reducer, initialState)
 const Input = (props) => {
   return (
   <div id='formDiv'>
-    <h1>Brainstorm Democracy</h1>
+    <h1 id='heading'>Brainstorm Democracy</h1>
     <input type='text'  placeholder='Type your idea here' />
     <input class='btn' type='submit' value='Submit' onClick={(e) => {
       props.dispatch({type: 'ADD_ONE', payload: {desc: e.target.previousSibling.value, votes: 0}})
