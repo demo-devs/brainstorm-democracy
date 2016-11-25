@@ -21,7 +21,7 @@ const store = createStore(reducer, initialState)
 const Input = (props) => {
   return (
   <div>
-    <input type='text' placeholder='Type your idea here' />
+    <input type='text' placeholder="What's your idea?" />
     <input type='submit' value='Submit' />
   </div>
 )}
@@ -30,7 +30,7 @@ const Input = (props) => {
 const Idea = (props) => {
   return (
     <ul>
-      <li>{props.desc}</li>
+      <li onClick={() => props.dispatch({props.index})}>{props.desc}</li>
     </ul>
   )
 }
